@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 0
   displayName: Wood
   icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  burnTimeSeconds: 60
+  burnTimeSeconds: 5
   rarity: 2
   startAmount: 10
   maxAmount: 64
