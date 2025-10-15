@@ -12,6 +12,7 @@ namespace Assets.Scripts.UI
     {
         [Header("UI Elements")]
         [SerializeField] private TextMeshProUGUI burnTimeText;
+        [SerializeField] private TextMeshProUGUI woodText;
         [SerializeField] private Slider fuelSlider;
         [SerializeField] private Button addFuelButton;
 
@@ -42,6 +43,9 @@ namespace Assets.Scripts.UI
                 {
                     addFuelButton.interactable = alive;
                 })
+                .AddTo(this);
+            _resourceService.Wood
+                .Subscribe(wood => woodText.text =  wood.ToString())
                 .AddTo(this);
 
             addFuelButton.onClick.AddListener(OnAddFuelClick);
