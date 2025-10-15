@@ -1139,6 +1139,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1402529180 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 394025966067448833, guid: e1d02160e9a27004e999071e641c0d8d, type: 3}
+  m_PrefabInstance: {fileID: 2102144075}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1547527438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1293,10 +1304,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   burnTimeText: {fileID: 885414901}
   woodText: {fileID: 1755875460}
+  coinText: {fileID: 1402529180}
   fuelSlider: {fileID: 684781913}
   addFuelButton: {fileID: 1728157728}
   woodPerClick: 1
-  fuelGainPerWood: 0.3
+  fuelGainPerWood: 5
 --- !u!1 &1700182477
 GameObject:
   m_ObjectHideFlags: 0

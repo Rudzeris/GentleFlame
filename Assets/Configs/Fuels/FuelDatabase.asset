@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad1a07d2c456aa45a945a45bfe7a303, type: 3}
-  m_Name: Diamond
+  m_Script: {fileID: 11500000, guid: 10f933bc51efc194fb3d0197814061f4, type: 3}
+  m_Name: FuelDatabase
   m_EditorClassIdentifier: 
-  resourceName: 
-  icon: {fileID: 0}
-  startCup: 0
-  softCup: 1000
+  Fuels:
+  - {fileID: 11400000, guid: 42fb53757ad64fc46bd695032ed63a09, type: 2}

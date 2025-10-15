@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ebe37cd45700a5479c9147afae489aa, type: 3}
-  m_Name: ProjectInstaller
+  m_Script: {fileID: 11500000, guid: 9cb7f2684ca5b7245ad582b17112f1b9, type: 3}
+  m_Name: CurrencyDatabase
   m_EditorClassIdentifier: 
-  _fuelDatabase: {fileID: 11400000, guid: f96005aeeefac3645a7fc59901a62c9a, type: 2}
-  _currencyDatabase: {fileID: 11400000, guid: d2a8b215e38573b499262c5fe77cd284, type: 2}
+  Currencies:
+  - {fileID: 11400000, guid: 5c5680432470bcc4d95947831f21b0f0, type: 2}

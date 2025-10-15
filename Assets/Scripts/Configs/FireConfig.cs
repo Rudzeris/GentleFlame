@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Configs
+[CreateAssetMenu(fileName = "FireConfig", menuName = "Configs/FireConfig")]
+public class FireConfig : ScriptableObject
 {
-    [CreateAssetMenu(menuName = "Configs/FireConfig")]
-    public class FireConfig : ScriptableObject
-    {
-        [Header("Топливо")]
-        [Range(0.01f, 1f)] public float fuelConsumptionPerSecond = 0.01f;
-        [Range(0.01f, 1f)] public float fuelGainPerWood = 0.1f;
+    [Header("Основные параметры")]
+    [Tooltip("Время горения без подкидывания топлива (секунды)")]
+    public float baseBurnTime = 12f;
+    [Tooltip("Максимальное время горения(секунды)")]
+    public float maxBurnTime = 60f;
 
-        [Header("Ограничение")]
-        public float maxFuel = 1f;
-    }
+    [Tooltip("Базовая мощность огня (HeatPower)")]
+    public int baseHeatPower = 1;
+
+    [Tooltip("Скорость уменьшения жара (единиц в секунду)")]
+    public float heatDecayRate = 0.1f;
+
 }

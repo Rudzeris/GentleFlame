@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fuelConsumptionPerSecond: 0.01
   fuelGainPerWood: 0.1
-  maxFuel: 1
+  maxFuelTime: 1

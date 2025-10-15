@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 728363e89718ecd44b87c24c26eb9663, type: 3}
+  m_Script: {fileID: 11500000, guid: fbfa4ec2bc686854198dce07904e2c63, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: 
-  resourceName: Wood
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  maxAmount: 10
+  type: 0
+  displayName: Wood
+  icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  burnTimeSeconds: 60
+  rarity: 2
+  startAmount: 10
+  maxAmount: 64

@@ -14,22 +14,26 @@ namespace Assets.Scripts.Services
         FireState FireState { get; }
         void StartBurning();
         void StopBurning();
-        void AddFuel(float amount);
+        void AddFuel(FuelType type, int amount);
     }
     public class FireService : IFireService
     {
         private readonly FireState _fireState;
         private readonly FireConfig _config;
         private readonly SignalBus _bus;
+        private readonly FuelDatabase _database;
         private CancellationTokenSource _cts;
 
         public FireState FireState => _fireState;
 
-        public FireService(FireState fireState, SignalBus bus, FireConfig config)
+        public FireService(FireState fireState, SignalBus bus, FireConfig config, FuelDatabase database)
         {
             _fireState = fireState;
             _bus = bus;
             _config = config;
+            _database = database;
+
+            _fireState.TimeToExtinguish.Value = config.baseBurnTime;
         }
 
         public void StartBurning()
@@ -37,7 +41,7 @@ namespace Assets.Scripts.Services
             StopBurning();
             _cts = new CancellationTokenSource();
             BurnLoop(_cts.Token).Forget();
-            Debug.Log("StartBurning");
+            Debug.Log("Fire started");
         }
 
         public void StopBurning()
@@ -45,33 +49,45 @@ namespace Assets.Scripts.Services
             _cts?.Cancel();
             _cts = null;
             _bus.Fire<FireDiedSignal>();
-            Debug.Log("EndBurning");
+            Debug.Log("Fire stopped");
         }
 
         private async UniTaskVoid BurnLoop(CancellationToken token)
         {
-            while(!token.IsCancellationRequested && _fireState.IsAlive.Value)
+            while (!token.IsCancellationRequested && _fireState.IsAlive.Value)
             {
                 await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: token);
 
-                _fireState.BurnTime.Value += 1f;
-                _fireState.FuelLevel.Value -= _config.fuelConsumptionPerSecond;
-                
-                Debug.Log($"time: {_fireState.BurnTime}, fuel: {_fireState.FuelLevel}, alive: {_fireState.IsAlive}");
+                Tick(1f);
+
                 _bus.Fire<FireFuelChangedSignal>();
 
-                if (_fireState.FuelLevel.Value <= 0f)
+                if (_fireState.TimeToExtinguish.Value <= 0f)
                 {
-                    _fireState.IsAlive.Value = false;
                     StopBurning();
                 }
             }
         }
 
-        public void AddFuel(float amount)
+        private void Tick(float deltaTime)
         {
-            if (_fireState.IsAlive.Value)
-                _fireState.FuelLevel.Value = Math.Min(_config.maxFuel, _fireState.FuelLevel.Value + _config.fuelGainPerWood * amount);
+            _fireState.TotalBurnTime.Value += deltaTime * _fireState.HeatPower.Value;
+
+            _fireState.TimeToExtinguish.Value -= deltaTime;
+
+            _fireState.HeatPower.Value = Math.Max(1, _fireState.HeatPower.Value);
+
+            _fireState.IsAlive.Value = _fireState.TimeToExtinguish.Value > 0f;
+        }
+
+        public void AddFuel(FuelType type, int amount)
+        {
+            if (!_fireState.IsAlive.Value) return;
+            if(_database.Get(type) == null) return;
+
+            _fireState.TimeToExtinguish.Value = Math.Min(_config.maxBurnTime, _fireState.TimeToExtinguish.Value + amount*_database.Get(type).burnTimeSeconds);
+
+            _fireState.HeatPower.Value = Math.Max(_fireState.HeatPower.Value, _database.Get(type).rarity);
         }
     }
 }

@@ -2,15 +2,20 @@
 
 namespace Assets.Scripts.Configs
 {
+    public enum CurrencyType
+    {
+        Coin, Crystal
+    }
     [CreateAssetMenu(menuName = "Configs/CurrencyConfig")]
     public class CurrencyConfig : ScriptableObject
     {
         [Header("Основные параметры")]
-        public string resourceName;
+        public CurrencyType type;
+        public string DisplayName;
         public Sprite icon;
 
         [Header("Ограничения")]
-        public int startCup = 0;
-        public int softCup = 1000;
+        public int startAmount = 0;
+        public int maxAmount = 1000;
     }
 }

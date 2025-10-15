@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad1a07d2c456aa45a945a45bfe7a303, type: 3}
   m_Name: Coin
   m_EditorClassIdentifier: 
-  resourceName: 
+  type: 0
+  DisplayName: Coin
   icon: {fileID: 0}
-  startCup: 0
-  softCup: 1000
+  startAmount: 5
+  maxAmount: 1000

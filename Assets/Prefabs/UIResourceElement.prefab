@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 2626310454145328610}
   - component: {fileID: 2443057397986960207}
   m_Layer: 5
-  m_Name: ResourceElement
+  m_Name: UIResourceElement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
