@@ -585,7 +585,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRenderer: {fileID: 1700182479}
-  effects: {fileID: 2097354829}
+  fireParticle: {fileID: 692839300}
+  smokeParticle: {fileID: 1466508890}
   deadFireColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &681340214
 GameObject:

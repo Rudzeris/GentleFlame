@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735a1d00b0d8d16418cb16881ebfa7a4, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: 
-  fuelConsumptionPerSecond: 0.01
-  fuelGainPerWood: 0.1
-  maxFuelTime: 1
+  baseBurnTime: 6
+  maxBurnTime: 30
+  baseHeatPower: 1
+  heatDecayRate: 0.1
