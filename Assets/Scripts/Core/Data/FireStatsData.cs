@@ -2,8 +2,10 @@
 {
     public class FireStatsData
     {
-        public int maxFuelCapacity;
+        public int maxFuelCapacity = 30;
         public int fuelAmount;
+        public float targetTemperature;
         public float temperature;
+        public float burnTimeLeft;
     }
 }
