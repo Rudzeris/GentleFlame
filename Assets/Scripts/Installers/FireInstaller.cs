@@ -26,7 +26,7 @@ namespace Assets.Scripts.Installers
             Container.Bind<FireService>().AsSingle();
 
             // Bind ViewModel
-            Container.Bind<FireViewModel>().AsSingle();
+            Container.Bind<FireStatsViewModel>().AsSingle();
         }
     }
 }

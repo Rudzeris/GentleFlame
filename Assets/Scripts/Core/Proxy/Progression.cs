@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Core.Data;
+using Assets.Scripts.Core.Enums;
 using UniRx;
 
 namespace Assets.Scripts.Core.Proxy

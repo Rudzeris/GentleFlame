@@ -1,21 +1,22 @@
-﻿using Assets.Scripts.Core.Data;
+﻿using Assets.Scripts.Core.Proxy;
 using Assets.Scripts.Core.Services;
 using UniRx;
 
 namespace Assets.Scripts.Presentation.ViewModels
 {
-    public class FireViewModel
+    public class FireStatsViewModel
     {
-        public IReadOnlyReactiveProperty<int> FuelAmount => _fireService.Stats.FuelAmount;
-        public IReadOnlyReactiveProperty<float> Temperature => _fireService.Stats.Temperature;
-        public IReadOnlyReactiveProperty<FireBright> Bright => _fireService.State.Bright;
-        public IReadOnlyReactiveProperty<FireMood> Mood => _fireService.State.Mood;
+        public readonly IReadOnlyReactiveProperty<int> FuelAmount;
+        public readonly IReadOnlyReactiveProperty<float> Temperature;
 
         private readonly FireService _fireService;
 
-        public FireViewModel(FireService fireService)
+        public FireStatsViewModel(FireStats stats, FireService fireService)
         {
             _fireService = fireService;
+
+            FuelAmount = stats.FuelAmount;
+            Temperature = stats.Temperature;
         }
 
         public bool AddFuel(int count, float temperature)

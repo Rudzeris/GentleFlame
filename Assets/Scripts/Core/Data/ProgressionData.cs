@@ -1,13 +1,9 @@
-﻿namespace Assets.Scripts.Core.Data
+﻿using Assets.Scripts.Core.Enums;
+using System;
+
+namespace Assets.Scripts.Core.Data
 {
-    public enum FireStage
-    {
-        Straw,
-        Wood,
-        Stone,
-        Bonfire,
-        Legendary,
-    }
+    [Serializable]
     public class ProgressionData
     {
         public int level;

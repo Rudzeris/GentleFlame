@@ -7,7 +7,7 @@ using Zenject;
 
 namespace Assets.Scripts.Presentation.Views
 {
-    public class FireView : MonoBehaviour
+    public class FireStatsView : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _fuelText;
         [SerializeField] private TextMeshProUGUI _tempText;
@@ -16,7 +16,7 @@ namespace Assets.Scripts.Presentation.Views
         [SerializeField] private Button _addFuel; 
 
         [Inject]
-        public void Construct(FireViewModel viewModel)
+        public void Construct(FireStatsViewModel viewModel)
         {
             viewModel.FuelAmount.Subscribe(value => _fuelText.text = value.ToString());
             viewModel.Temperature.Subscribe(value => _tempText.text = value.ToString("F1"));

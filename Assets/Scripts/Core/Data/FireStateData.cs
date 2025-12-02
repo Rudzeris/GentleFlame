@@ -1,20 +1,9 @@
-﻿namespace Assets.Scripts.Core.Data
+﻿using Assets.Scripts.Core.Enums;
+using System;
+
+namespace Assets.Scripts.Core.Data
 {
-    public enum FireMood
-    {
-        Happy,
-        Sad,
-        Sleep,
-        Angry,
-        Inspires,
-    }
-    public enum FireBright
-    {
-        Bright,
-        Dim,
-        AlmostOut,
-        Extinguished,
-    }
+    [Serializable]
     public class FireStateData
     {
         public FireBright fireBright;

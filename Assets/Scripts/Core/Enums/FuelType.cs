@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Core.Data
+﻿namespace Assets.Scripts.Core.Enums
 {
     public enum FuelType
     {

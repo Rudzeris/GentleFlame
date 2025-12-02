@@ -7,15 +7,17 @@ namespace Assets.Scripts.Core.Services
 {
     public class FireService
     {
-        public FireStats Stats { get; }
-        public FireState State { get; }
+        private readonly FireStats _stats;
+        private readonly FireState _state;
 
         private CancellationTokenSource _cts;
 
         public FireService(FireStats stats, FireState state)
         {
-            Stats = stats;
-            State = state;
+            _stats = stats;
+            _state = state;
+
+            _stats.MaxFuelCapacity.Value = 5;
 
             _cts = new CancellationTokenSource();
             RunTicker(_cts.Token).Forget();
@@ -32,52 +34,52 @@ namespace Assets.Scripts.Core.Services
 
         public bool AddFuel(int count, float temperature)
         {
-            if (Stats.FuelAmount.Value + count > Stats.MaxFuelCapacity.Value)
+            if (_stats.FuelAmount.Value + count > _stats.MaxFuelCapacity.Value)
             {
                 Debug.LogError("FuelAmount is fill");
                 return false;
             }
 
-            if (Stats.TargetTemperature.Value < temperature)
-                Stats.TargetTemperature.Value = temperature;
+            if (_stats.TargetTemperature.Value < temperature)
+                _stats.TargetTemperature.Value = temperature;
             else
-                Stats.TargetTemperature.Value = (Stats.Temperature.Value * Stats.FuelAmount.Value + count * temperature) / (Stats.FuelAmount.Value + count);
+                _stats.TargetTemperature.Value = (_stats.Temperature.Value * _stats.FuelAmount.Value + count * temperature) / (_stats.FuelAmount.Value + count);
 
-            Stats.FuelAmount.Value += count;
+            _stats.FuelAmount.Value += count;
 
             return true;
         }
 
-        public bool IsFreeFuel() => Stats.FuelAmount.Value < Stats.MaxFuelCapacity.Value;
+        public bool IsFreeFuel() => _stats.FuelAmount.Value < _stats.MaxFuelCapacity.Value;
 
         public bool TrySpendFuel(int count)
         {
-            if (Stats.FuelAmount.Value <= 0)
+            if (_stats.FuelAmount.Value <= 0)
                 return false;
 
-            Stats.FuelAmount.Value -= count;
+            _stats.FuelAmount.Value -= count;
             return true;
         }
 
         public void Tick(float deltaTime)
         {
-            if (Stats.FuelAmount.Value > 0)
+            if (_stats.FuelAmount.Value > 0)
             {
-                Stats.BurnTimeLeft.Value -= deltaTime;
+                _stats.BurnTimeLeft.Value -= deltaTime;
 
-                if (Stats.BurnTimeLeft.Value <= 0)
+                if (_stats.BurnTimeLeft.Value <= 0)
                 {
-                    Stats.FuelAmount.Value -= 1;
-                    Stats.BurnTimeLeft.Value = Stats.FuelAmount.Value > 0 ? GetFuelBurnTime() : 0;
+                    _stats.FuelAmount.Value -= 1;
+                    _stats.BurnTimeLeft.Value = _stats.FuelAmount.Value > 0 ? GetFuelBurnTime() : 0;
                 }
             }
             else
-                Stats.TargetTemperature.Value = 0;
+                _stats.TargetTemperature.Value = 0;
 
 
-            Stats.Temperature.Value = UnityEngine.Mathf.Lerp(
-                    Stats.Temperature.Value,
-                    Stats.TargetTemperature.Value,
+            _stats.Temperature.Value = UnityEngine.Mathf.Lerp(
+                    _stats.Temperature.Value,
+                    _stats.TargetTemperature.Value,
                     deltaTime * 0.3f);
         }
 
