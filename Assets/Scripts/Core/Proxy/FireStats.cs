@@ -11,10 +11,10 @@ namespace Assets.Scripts.Core.Proxy
         public readonly ReactiveProperty<float> TargetTemperature;
         public readonly ReactiveProperty<float> BurnTimeLeft;
 
-        public readonly FireStatsData Origin;
+        public readonly FireStatsData origin;
         public FireStats(FireStatsData origin)
         {
-            Origin = origin;
+            this.origin = origin;
             MaxFuelCapacity = new ReactiveProperty<int>(origin.maxFuelCapacity);
             FuelAmount = new ReactiveProperty<int>(origin.fuelAmount);
             Temperature = new ReactiveProperty<float>(origin.temperature);

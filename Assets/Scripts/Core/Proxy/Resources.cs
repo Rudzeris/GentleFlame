@@ -4,13 +4,13 @@ using UniRx;
 
 namespace Assets.Scripts.Core.Proxy
 {
-    public class Storage
+    public class Resources
     {
         public readonly ReactiveDictionary<FuelType, Fuel> Fuels;
 
-        private readonly StorageData _origin;
+        private readonly ResourcesData _origin;
 
-        public Storage(StorageData origin)
+        public Resources(ResourcesData origin)
         {
             _origin = origin;
 

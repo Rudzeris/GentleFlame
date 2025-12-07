@@ -8,19 +8,19 @@ namespace Assets.Scripts.Core.Proxy
     {
         public readonly ReactiveDictionary<CurrencyType, int> Currencies;
 
-        private readonly CurrencyData _origin;
+        public readonly CurrencyData origin;
 
         public Currency(CurrencyData origin)
         {
-            _origin = origin;
+            this.origin = origin;
 
             Currencies = new ReactiveDictionary<CurrencyType, int>();
 
             foreach (var pair in origin.currencies)
                 Currencies[pair.Key] = pair.Value;
 
-            Currencies.ObserveAdd().Subscribe(pair => _origin.currencies[pair.Key] = pair.Value);
-            Currencies.ObserveRemove().Subscribe(pair => _origin.currencies.Remove(pair.Key));
+            Currencies.ObserveAdd().Subscribe(pair => this.origin.currencies[pair.Key] = pair.Value);
+            Currencies.ObserveRemove().Subscribe(pair => this.origin.currencies.Remove(pair.Key));
         }
     }
 }

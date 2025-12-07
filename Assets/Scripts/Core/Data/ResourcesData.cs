@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Assets.Scripts.Core.Data
 {
     [Serializable]
-    public class StorageData
+    public class ResourcesData
     {
         public Dictionary<FuelType, FuelData> fuels;
     }

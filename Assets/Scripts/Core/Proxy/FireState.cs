@@ -9,11 +9,11 @@ namespace Assets.Scripts.Core.Proxy
         public readonly ReactiveProperty<FireBright> Bright;
         public readonly ReactiveProperty<FireMood> Mood;
 
-        public readonly FireStateData Origin;
+        public readonly FireStateData origin;
 
         public FireState(FireStateData origin)
         {
-            Origin = origin;
+            this.origin = origin;
 
             Bright = new ReactiveProperty<FireBright>(origin.fireBright);
             Mood = new ReactiveProperty<FireMood>(origin.fireMood);

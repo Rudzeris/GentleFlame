@@ -10,7 +10,7 @@ namespace Assets.Scripts.Installers
     {
         public override void InstallBindings()
         {
-            // Origin Data (DTO)
+            // origin Data (DTO)
             var statsData = new FireStatsData();
             var stateData = new FireStateData();
 

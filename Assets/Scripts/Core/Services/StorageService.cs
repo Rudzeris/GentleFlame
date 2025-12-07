@@ -6,9 +6,9 @@ namespace Assets.Scripts.Core.Services
 {
     public class StorageService
     {
-        private readonly Storage _storage;
+        private readonly Proxy.Resources _storage;
 
-        public StorageService(Storage storage)
+        public StorageService(Proxy.Resources storage)
         {
             _storage = storage;
         }
