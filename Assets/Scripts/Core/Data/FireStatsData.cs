@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Core.Data
 {
@@ -6,9 +7,10 @@ namespace Assets.Scripts.Core.Data
     public class FireStatsData
     {
         public int maxFuelCapacity;
-        public int fuelAmount;
-        public float targetTemperature;
         public float temperature;
         public float burnTimeLeft;
+
+        /// <summary>Состав очага. Целевая температура выводится из него, поэтому не сохраняется.</summary>
+        public List<HearthSlotData> hearth = new List<HearthSlotData>();
     }
 }

@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Core.Enums;
+using Assets.Scripts.Core.Enums;
 using System;
 
 namespace Assets.Scripts.Core.Data

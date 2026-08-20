@@ -1,10 +1,10 @@
-﻿namespace Assets.Scripts.Core.Enums
+namespace Assets.Scripts.Core.Enums
 {
     public enum FireBright
     {
-        Bright,
-        Dim,
-        AlmostOut,
-        Extinguished,
+        Extinguished = 0,
+        AlmostOut = 1,
+        Dim = 2,
+        Bright = 3,
     }
 }

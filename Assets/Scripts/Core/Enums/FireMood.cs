@@ -1,11 +1,11 @@
-﻿namespace Assets.Scripts.Core.Enums
+namespace Assets.Scripts.Core.Enums
 {
     public enum FireMood
     {
-        Happy,      // Счастливый
-        Sad,        // Грустный
-        Sleep,      // Сонливый
-        Angry,      // Злой
-        Inspires,   // Вдохновлен
+        Sleep = 0,      // Сонливый
+        Sad = 1,        // Грустный
+        Happy = 2,      // Счастливый
+        Inspires = 3,   // Вдохновлён
+        Angry = 4,      // Злой
     }
 }

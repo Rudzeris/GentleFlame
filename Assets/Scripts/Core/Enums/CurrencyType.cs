@@ -1,8 +1,8 @@
-﻿namespace Assets.Scripts.Core.Enums
+namespace Assets.Scripts.Core.Enums
 {
     public enum CurrencyType
     {
-        Coin,
-        Crystal
+        Coin = 0,       // Тепло — мягкая валюта
+        Crystal = 1,    // Искры — твёрдая валюта
     }
 }

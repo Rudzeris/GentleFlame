@@ -1,15 +1,15 @@
-﻿using Assets.Scripts.Core.Proxy;
-using System;
-using UniRx;
+using Assets.Scripts.Core.Proxy;
 
 namespace Assets.Scripts.Core.Services
 {
     public interface ISaveProvider
     {
-        public GameState GameState { get; }
+        GameState GameState { get; }
 
-        public IObservable<GameState> LoadGameState();
-        public IObservable<bool> SaveGameState();
-        public IObservable<bool> ResetGameState();
+        /// <summary>Загружает сейв, при его отсутствии создаёт новую игру. Никогда не возвращает null.</summary>
+        GameState LoadGameState();
+
+        bool SaveGameState();
+        GameState ResetGameState();
     }
 }

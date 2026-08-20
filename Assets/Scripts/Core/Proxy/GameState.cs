@@ -1,28 +1,37 @@
-﻿using Assets.Scripts.Core.Data;
+using Assets.Scripts.Core.Data;
 using System;
 
 namespace Assets.Scripts.Core.Proxy
 {
-    [Serializable]
-    public class GameState
+    public class GameState : IDisposable
     {
         public readonly Currency currency;
         public readonly FireState fireState;
         public readonly FireStats fireStats;
         public readonly Progression progression;
-        public readonly Resources resources;
+        public readonly Storage storage;
 
         public readonly GameStateData origin;
 
         public GameState(GameStateData origin)
         {
-            this.origin = origin;
+            this.origin = origin ?? new GameStateData();
+            this.origin.EnsureNotNull();
 
-            currency = new Currency(origin.currency);
-            fireState = new FireState(origin.fireState);
-            fireStats = new FireStats(origin.fireStats);
-            progression = new Progression(origin.progression);
-            resources = new Resources(origin.resources);
+            currency = new Currency(this.origin.currency);
+            fireState = new FireState(this.origin.fireState);
+            fireStats = new FireStats(this.origin.fireStats);
+            progression = new Progression(this.origin.progression);
+            storage = new Storage(this.origin.resources);
+        }
+
+        public void Dispose()
+        {
+            currency.Dispose();
+            fireState.Dispose();
+            fireStats.Dispose();
+            progression.Dispose();
+            storage.Dispose();
         }
     }
 }
